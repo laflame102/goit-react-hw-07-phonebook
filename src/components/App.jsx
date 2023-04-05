@@ -3,11 +3,15 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 import { Container } from './App.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
+import { selectError, selectIsLoading } from 'redux/selectors';
+import Spinner from './Spinner';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -20,6 +24,8 @@ export const App = () => {
 
       <h2>Contacts</h2>
       <Filter />
+      {isLoading && !error && <Spinner />}
+      {error && <p>{error.message}</p>}
       <ContactList />
     </Container>
   );
