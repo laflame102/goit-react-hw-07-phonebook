@@ -25,7 +25,7 @@ export const App = () => {
       <h2>Contacts</h2>
       <Filter />
       {isLoading && !error && <Spinner />}
-      {error && <p>{error.message}</p>}
+      {error && <p>{error}</p>}
       <ContactList />
     </Container>
   );

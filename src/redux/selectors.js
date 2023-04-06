@@ -17,17 +17,3 @@ export const selectSearchingContact = createSelector(
     );
   }
 );
-
-// export const selectSearchingContact = createSelector(
-//   [selectFilter, selectContacts],
-//   (_, filter, contacts) => {
-//     console.log(contacts);
-//     if (contacts.length > 0) {
-//       const normalizedFilter = filter.toLowerCase();
-//       return contacts.filter(contact =>
-//         contact.name.toLowerCase().includes(normalizedFilter)
-//       );
-//     }
-//     return contacts;
-//   }
-// );
